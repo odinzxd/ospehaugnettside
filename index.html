@@ -6,212 +6,750 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
-      --primary: #e53935;
-      --dark: #1f1f1f;
-      --light: #f5f5f5;
-      --text: #333;
+      --bg: #050816;
+      --card: #0f172a;
+      --accent: #f97316;
+      --accent-soft: rgba(249, 115, 22, 0.14);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-
-    body { background: #fff; color: var(--text); }
-
-    header {
-      background: var(--dark);
-      color: white;
-      padding: 1.3rem 1.5rem;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
     }
 
-    .nav-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    body {
+      background: radial-gradient(circle at top, #1f2937 0, #020617 55%);
+      color: var(--text);
+      min-height: 100vh;
     }
 
-    h1, h2, h3 { font-weight: 700; }
-
-    nav a {
-      color: #ddd;
-      margin-left: 1rem;
+    a {
+      color: inherit;
       text-decoration: none;
+    }
+
+    /* HEADER / NAV */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.85),
+        rgba(15, 23, 42, 0.55),
+        transparent
+      );
+      border-bottom: 1px solid rgba(31, 41, 55, 0.7);
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.9rem 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
       font-size: 0.95rem;
     }
-    nav a:hover { color: var(--primary); }
 
-    .btn {
-      padding: 0.7rem 1.3rem;
-      background: var(--primary);
-      color: white;
+    .logo-badge {
+      width: 28px;
+      height: 28px;
       border-radius: 999px;
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-block;
+      background: radial-gradient(circle at 30% 20%, #f97316, #b91c1c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
     }
 
-    main { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+    nav {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      color: var(--muted);
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .nav-cta {
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(249, 115, 22, 0.45);
+      background: radial-gradient(circle at top left, #f97316 0, #b91c1c 55%);
+      color: #020617;
+      font-weight: 600;
+      font-size: 0.85rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-cta:hover {
+      filter: brightness(1.05);
+    }
+
+    /* LAYOUT */
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 2rem 1.3rem 3.2rem;
+    }
+
+    section {
+      margin-bottom: 3.2rem;
+    }
 
     /* HERO */
     .hero {
-      padding: 3rem 0;
-      text-align: left;
-      max-width: 900px;
-      margin-bottom: 3rem;
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.6fr);
+      gap: 2rem;
+      align-items: center;
+      padding-top: 1.5rem;
     }
 
-    .hero h1 { font-size: 2.4rem; margin-bottom: 1rem; }
-    .hero p { margin-bottom: 1.5rem; font-size: 1.05rem; color: #555; }
+    .hero-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 0.7rem;
+    }
 
-    /* Section */
-    section { margin-bottom: 4rem; }
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 2.8rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
 
-    .grid-3 {
+    .hero p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 1.4rem;
+      max-width: 560px;
+    }
+
+    .hero-location {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .hero-location span {
+      color: var(--accent);
+      font-size: 0.85rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      padding: 0.8rem 1.5rem;
+      border-radius: 999px;
+      background: radial-gradient(circle at top left, #f97316 0, #b91c1c 55%);
+      color: #020617;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.07);
+    }
+
+    .btn-ghost {
+      padding: 0.75rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(148, 163, 184, 0.8);
+      color: var(--text);
+    }
+
+    .hero-aside {
+      background: radial-gradient(circle at top, #020617, #020617 45%, #0b1120 100%);
+      border-radius: 1.3rem;
+      padding: 1.4rem 1.3rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.7);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-aside::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at 0 0, rgba(249, 115, 22, 0.18), transparent 55%);
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .hero-aside-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.7rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-aside h2 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .hero-chip {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(249, 115, 22, 0.5);
+      color: var(--accent);
+    }
+
+    .hero-aside-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.7rem;
+      position: relative;
+      z-index: 1;
+      margin-top: 0.4rem;
+    }
+
+    .hero-item {
+      padding: 0.8rem 0.9rem;
+      border-radius: 0.9rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(30, 64, 175, 0.6);
+      font-size: 0.88rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hero-item-title {
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+
+    .hero-item-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-item-pill {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 118, 110, 0.1);
+      border: 1px solid rgba(45, 212, 191, 0.4);
+      color: #a5f3fc;
+      white-space: nowrap;
+    }
+
+    /* SEKSJONSOVERSKRIFTER */
+    .section-heading {
+      font-size: 1.55rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-sub {
+      font-size: 0.92rem;
+      color: var(--muted);
+      max-width: 580px;
+      margin-bottom: 1.4rem;
+    }
+
+    /* TJENESTER */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.4rem;
     }
 
-    .card {
-      background: var(--light);
-      padding: 1.4rem;
-      border-radius: 0.8rem;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.07);
-    }
-
-    .card h3 { margin-bottom: 0.5rem; }
-
-    .contact-box {
-      background: var(--dark);
-      padding: 2rem;
+    .service-card {
+      background: rgba(15, 23, 42, 0.95);
       border-radius: 1rem;
-      color: white;
-      display: grid;
-      gap: 1.5rem;
-      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--border);
+      padding: 1.2rem 1.1rem;
+      position: relative;
+      overflow: hidden;
     }
 
-    label { font-size: 0.85rem; }
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at top right, rgba(249, 115, 22, 0.18), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
 
-    input, textarea {
-      width: 100%;
-      padding: 0.7rem;
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 0.9rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
       margin-bottom: 0.7rem;
-      border: none;
-      border-radius: 0.4rem;
     }
 
-    textarea { min-height: 90px; }
+    .service-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.35rem;
+    }
 
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .service-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .service-pill {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--muted);
+    }
+
+    /* HVORFOR OSS */
+    .why-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
+      gap: 1.6rem;
+      align-items: flex-start;
+    }
+
+    .why-list {
+      list-style: none;
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .why-list li {
+      font-size: 0.9rem;
+      color: var(--muted);
+      display: flex;
+      gap: 0.55rem;
+      align-items: flex-start;
+    }
+
+    .why-bullet {
+      color: #22c55e;
+      margin-top: 0.05rem;
+    }
+
+    .why-panel {
+      border-radius: 1.1rem;
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at top left, rgba(248, 250, 252, 0.02), #020617 70%);
+      padding: 1.2rem 1.1rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .why-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.78rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .why-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    /* KONTAKT */
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
+      gap: 1.7rem;
+      align-items: flex-start;
+    }
+
+    .contact-card {
+      border-radius: 1.1rem;
+      padding: 1.3rem 1.2rem;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .contact-card strong {
+      color: var(--text);
+    }
+
+    .contact-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #fed7aa;
+      font-size: 0.8rem;
+      margin-bottom: 0.7rem;
+    }
+
+    form {
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    label {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.6rem 0.7rem;
+      border-radius: 0.6rem;
+      border: 1px solid var(--border);
+      background: #020617;
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: rgba(249, 115, 22, 0.6);
+      box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.35);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* FOOTER */
     footer {
-      padding: 1.2rem;
-      text-align: center;
-      color: #777;
-      border-top: 1px solid #eee;
-      margin-top: 3rem;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.3rem 1.3rem 2rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid rgba(31, 41, 55, 0.8);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
-    @media (max-width: 700px) {
-      .contact-box { grid-template-columns: 1fr; }
-      nav { display: none; }
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero,
+      .why-wrap,
+      .contact-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-aside {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 720px) {
+      nav {
+        display: none;
+      }
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+      main {
+        padding-top: 1.6rem;
+      }
     }
   </style>
 </head>
 <body>
-
-<header>
-  <div class="nav-container">
-    <div class="logo"><strong>Ospehaug Solutions</strong></div>
-    <nav>
-      <a href="#tjenester">Tjenester</a>
-      <a href="#kontakt">Kontakt</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <!-- HERO -->
-  <section class="hero">
-    <h1>Leveranse, kraning og snøbrøyting – når du trenger det</h1>
-    <p>
-      Vi leverer fleksible tjenester innen transport, kraning med lastebil og snøbrøyting
-      om vinteren. Rask respons, høy service og pålitelige leveranser.
-    </p>
-    <a href="#kontakt" class="btn">Kontakt oss</a>
-  </section>
-
-  <!-- TJENESTER -->
-  <section id="tjenester">
-    <h2>Tjenester</h2>
-    <p style="margin-bottom:1rem; color:#555;">
-      Her er tjenestene vi tilbyr året rundt.
-    </p>
-
-    <div class="grid-3">
-      <div class="card">
-        <h3>🚚 Leveranse / Transport</h3>
-        <p>
-          Vi hjelper med levering av materialer, utstyr og annet som må fraktes.
-          Punktlig og effektiv transport etter avtale.
-        </p>
+  <header>
+    <div class="nav-inner">
+      <div class="logo">
+        <div class="logo-badge">OS</div>
+        <span>Ospehaug Solutions</span>
       </div>
-
-      <div class="card">
-        <h3>🏗️ Kraning med lastebil</h3>
-        <p>
-          Kranbil tilgjengelig for løfting, plassering og håndtering av tunge gjenstander.
-          Perfekt for bygg, materialer og større prosjekter.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>❄️ Snøbrøyting (vinter)</h3>
-        <p>
-          Snøbrøyting for private, borettslag og bedrifter.
-          Vi sørger for trygge og ryddige områder gjennom hele vinteren.
-        </p>
-      </div>
+      <nav>
+        <a href="#tjenester">Tjenester</a>
+        <a href="#om">Om oss</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <a href="#kontakt" class="nav-cta">Be om tilbud</a>
     </div>
-  </section>
+  </header>
 
-  <!-- KONTAKT -->
-  <section id="kontakt">
-    <h2>Kontakt oss</h2>
-    <p style="margin-bottom:1rem; color:#555;">
-      Send oss en melding, så får du svar raskt.
-    </p>
-
-    <div class="contact-box">
+  <main>
+    <!-- HERO -->
+    <section class="hero">
       <div>
-        <h3>Direkte kontakt</h3>
-        <p><strong>E-post:</strong> <a style="color:white;" href="mailto:post@ospehaugsolutions.no">post@ospehaugsolutions.no</a></p>
-        <p><strong>Telefon:</strong> +47 000 00 000</p>
-        <p><strong>Tjenester:</strong> Transport, kraning, snøbrøyting</p>
+        <div class="hero-tag">Leveranse · Kraning · Snøbrøyting</div>
+        <div class="hero-location">
+          <span>●</span> Vi holder til i Vestland og tar oppdrag for både private og bedrifter.
+        </div>
+
+        <h1>Praktiske tjenester med tungbil – når du trenger det, der du trenger det.</h1>
+        <p>
+          Ospehaug Solutions tilbyr fleksibel leveranse, kraning med lastebil og snøbrøyting
+          om vinteren. Enkelt å forholde seg til, ryddige avtaler og rask respons.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#kontakt" class="btn-primary">Kontakt for pris</a>
+          <a href="#tjenester" class="btn-ghost">Se alle tjenester</a>
+        </div>
       </div>
 
-      <form action="mailto:post@ospehaugsolutions.no" method="post" enctype="text/plain">
-        <label for="navn">Navn</label>
-        <input id="navn" name="Navn" required />
+      <aside class="hero-aside" aria-label="Oversikt over tjenester">
+        <div class="hero-aside-header">
+          <h2>Oppdrag i Vestland</h2>
+          <div class="hero-chip">Kvelds- og helgeoppdrag etter avtale</div>
+        </div>
+        <div class="hero-aside-grid">
+          <div class="hero-item">
+            <div>
+              <div class="hero-item-title">Leveranse & transport</div>
+              <div class="hero-item-sub">Materialer, utstyr og annet som må fram i tide.</div>
+            </div>
+            <div class="hero-item-pill">Planlagte og hasteoppdrag</div>
+          </div>
+          <div class="hero-item">
+            <div>
+              <div class="hero-item-title">Kraning med lastebil</div>
+              <div class="hero-item-sub">Løfting og plassering på byggeplass eller eiendom.</div>
+            </div>
+            <div class="hero-item-pill">Trygg håndtering</div>
+          </div>
+          <div class="hero-item">
+            <div>
+              <div class="hero-item-title">Snøbrøyting vinterstid</div>
+              <div class="hero-item-sub">Innkjørsler, gårdsplasser og næringsområder.</div>
+            </div>
+            <div class="hero-item-pill">Sesong- eller enkeltoppdrag</div>
+          </div>
+        </div>
+      </aside>
+    </section>
 
-        <label for="epost">E-post</label>
-        <input type="email" id="epost" name="E-post" required />
+    <!-- TJENESTER -->
+    <section id="tjenester">
+      <h2 class="section-heading">Tjenester</h2>
+      <p class="section-sub">
+        Vi tilpasser oss behovet ditt – enten du trenger én enkelt leveranse, fast snøbrøyting
+        gjennom vinteren eller kraning til et byggeprosjekt.
+      </p>
 
-        <label for="melding">Melding</label>
-        <textarea id="melding" name="Melding" required></textarea>
+      <div class="service-grid">
+        <article class="service-card">
+          <div class="service-icon">🚚</div>
+          <h3>Leveranse & transport</h3>
+          <p>
+            Levering av materialer, utstyr og annet som må fraktes trygt fra A til B.
+            Vi avtaler tidspunkt på forhånd og holder deg oppdatert underveis.
+          </p>
+          <div class="service-meta">
+            <span class="service-pill">Materialleveranse</span>
+            <span class="service-pill">Utstyr & verktøy</span>
+            <span class="service-pill">Fleksible tider</span>
+          </div>
+        </article>
 
-        <button type="submit" class="btn">Send forespørsel</button>
-      </form>
-    </div>
-  </section>
-</main>
+        <article class="service-card">
+          <div class="service-icon">🏗️</div>
+          <h3>Kraning med lastebil</h3>
+          <p>
+            Kranbil til løfting og plassering av tunge gjenstander, konstruksjoner
+            og materialer. Vi planlegger løftet sammen med deg for trygg gjennomføring.
+          </p>
+          <div class="service-meta">
+            <span class="service-pill">Byggeprosjekter</span>
+            <span class="service-pill">Plassering & løft</span>
+            <span class="service-pill">Koordinering på stedet</span>
+          </div>
+        </article>
 
-<footer>
-  © <span id="year"></span> Ospehaug Solutions. Alle rettigheter reservert.
-</footer>
+        <article class="service-card">
+          <div class="service-icon">❄️</div>
+          <h3>Snøbrøyting om vinteren</h3>
+          <p>
+            Snøbrøyting for private, borettslag og bedrifter i Vestland. Vi holder
+            oppkjørsler, gårdsplasser og parkeringsområder åpne når været står på.
+          </p>
+          <div class="service-meta">
+            <span class="service-pill">Sesongavtaler</span>
+            <span class="service-pill">Enkeltoppdrag</span>
+            <span class="service-pill">Tidlig utrykning</span>
+          </div>
+        </article>
+      </div>
+    </section>
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+    <!-- OM OSS -->
+    <section id="om">
+      <h2 class="section-heading">Om Ospehaug Solutions</h2>
+      <p class="section-sub">
+        Ospehaug Solutions er et enkeltpersonforetak basert i Vestland. Vi legger vekt på
+        å være lett å få tak i, holde det vi lover og gi klare beskjeder før, under og etter et oppdrag.
+      </p>
 
+      <div class="why-wrap">
+        <ul class="why-list">
+          <li>
+            <span class="why-bullet">✓</span>
+            <span>Én fast kontaktperson – du slipper å forholde deg til mange ledd.</span>
+          </li>
+          <li>
+            <span class="why-bullet">✓</span>
+            <span>Ryddige avtaler på forhånd, slik at du vet hva som skjer og når.</span>
+          </li>
+          <li>
+            <span class="why-bullet">✓</span>
+            <span>Fleksible løsninger tilpasset prosjektet ditt – smått eller stort.</span>
+          </li>
+          <li>
+            <span class="why-bullet">✓</span>
+            <span>Mulighet for kvelds- og helgeoppdrag ved behov.</span>
+          </li>
+        </ul>
+
+        <div class="why-panel">
+          <div class="why-badge">
+            <span class="why-badge-dot"></span>
+            <span>Praktisk hjelp med tungbil i Vestland</span>
+          </div>
+          <p>
+            Enten du er privatperson, entreprenør eller en mindre bedrift, kan vi være en
+            fleksibel ressurs du ringer når du trenger ekstra kapasitet. Vi tar oss tid til
+            å forstå situasjonen din og finne en løsning som fungerer i praksis – ikke bare på papiret.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="kontakt">
+      <h2 class="section-heading">Kontakt</h2>
+      <p class="section-sub">
+        Beskriv kort hva du trenger hjelp til – leveranse, kraning eller snøbrøyting –
+        så får du en tilbakemelding med pris og tidligste mulige tidspunkt.
+      </p>
+
+      <div class="contact-wrap">
+        <div class="contact-card">
+          <div class="contact-chip">Direkte kontakt</div>
+          <p><strong>E-post:</strong> <a href="mailto:post@ospehaugsolutions.no">post@ospehaugsolutions.no</a></p>
+          <p><strong>Telefon:</strong> +47 000 00 000</p>
+          <p><strong>Område:</strong> Vestland og nærliggende områder etter avtale</p>
+          <br />
+          <p>
+            For faste avtaler (f.eks. snøbrøyting gjennom vinteren) eller større prosjekter
+            med kranbil, skriv gjerne når du ønsker oppstart og hvor i Vestland oppdraget er.
+          </p>
+        </div>
+
+        <form action="mailto:post@ospehaugsolutions.no" method="post" enctype="text/plain">
+          <label for="navn">Navn</label>
+          <input id="navn" name="Navn" required />
+
+          <label for="epost">E-post</label>
+          <input type="email" id="epost" name="E-post" required />
+
+          <label for="tjeneste">Hva gjelder henvendelsen?</label>
+          <input id="tjeneste" name="Tjeneste (leveranse / kraning / snøbrøyting)" required />
+
+          <label for="sted">Sted i Vestland</label>
+          <input id="sted" name="Sted" placeholder="F.eks. Bergen, Øygarden, Alver ..." />
+
+          <label for="melding">Beskrivelse</label>
+          <textarea id="melding" name="Melding" required></textarea>
+
+          <button type="submit" class="btn-primary" style="margin-top:0.4rem;">
+            Send forespørsel
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> Ospehaug Solutions. Alle rettigheter reservert.</span>
+    <span>Basert i Vestland · Leveranse · Kraning · Snøbrøyting</span>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
