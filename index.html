@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ospehaug Solutions – Leveranse, kraning & snøbrøyting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --primary: #e53935;
+      --dark: #1f1f1f;
+      --light: #f5f5f5;
+      --text: #333;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+
+    body { background: #fff; color: var(--text); }
+
+    header {
+      background: var(--dark);
+      color: white;
+      padding: 1.3rem 1.5rem;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h1, h2, h3 { font-weight: 700; }
+
+    nav a {
+      color: #ddd;
+      margin-left: 1rem;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    nav a:hover { color: var(--primary); }
+
+    .btn {
+      padding: 0.7rem 1.3rem;
+      background: var(--primary);
+      color: white;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    main { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* HERO */
+    .hero {
+      padding: 3rem 0;
+      text-align: left;
+      max-width: 900px;
+      margin-bottom: 3rem;
+    }
+
+    .hero h1 { font-size: 2.4rem; margin-bottom: 1rem; }
+    .hero p { margin-bottom: 1.5rem; font-size: 1.05rem; color: #555; }
+
+    /* Section */
+    section { margin-bottom: 4rem; }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .card {
+      background: var(--light);
+      padding: 1.4rem;
+      border-radius: 0.8rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+    }
+
+    .card h3 { margin-bottom: 0.5rem; }
+
+    .contact-box {
+      background: var(--dark);
+      padding: 2rem;
+      border-radius: 1rem;
+      color: white;
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    label { font-size: 0.85rem; }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 0.7rem;
+      border: none;
+      border-radius: 0.4rem;
+    }
+
+    textarea { min-height: 90px; }
+
+    footer {
+      padding: 1.2rem;
+      text-align: center;
+      color: #777;
+      border-top: 1px solid #eee;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 700px) {
+      .contact-box { grid-template-columns: 1fr; }
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <div class="logo"><strong>Ospehaug Solutions</strong></div>
+    <nav>
+      <a href="#tjenester">Tjenester</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Leveranse, kraning og snøbrøyting – når du trenger det</h1>
+    <p>
+      Vi leverer fleksible tjenester innen transport, kraning med lastebil og snøbrøyting
+      om vinteren. Rask respons, høy service og pålitelige leveranser.
+    </p>
+    <a href="#kontakt" class="btn">Kontakt oss</a>
+  </section>
+
+  <!-- TJENESTER -->
+  <section id="tjenester">
+    <h2>Tjenester</h2>
+    <p style="margin-bottom:1rem; color:#555;">
+      Her er tjenestene vi tilbyr året rundt.
+    </p>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3>🚚 Leveranse / Transport</h3>
+        <p>
+          Vi hjelper med levering av materialer, utstyr og annet som må fraktes.
+          Punktlig og effektiv transport etter avtale.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🏗️ Kraning med lastebil</h3>
+        <p>
+          Kranbil tilgjengelig for løfting, plassering og håndtering av tunge gjenstander.
+          Perfekt for bygg, materialer og større prosjekter.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>❄️ Snøbrøyting (vinter)</h3>
+        <p>
+          Snøbrøyting for private, borettslag og bedrifter.
+          Vi sørger for trygge og ryddige områder gjennom hele vinteren.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section id="kontakt">
+    <h2>Kontakt oss</h2>
+    <p style="margin-bottom:1rem; color:#555;">
+      Send oss en melding, så får du svar raskt.
+    </p>
+
+    <div class="contact-box">
+      <div>
+        <h3>Direkte kontakt</h3>
+        <p><strong>E-post:</strong> <a style="color:white;" href="mailto:post@ospehaugsolutions.no">post@ospehaugsolutions.no</a></p>
+        <p><strong>Telefon:</strong> +47 000 00 000</p>
+        <p><strong>Tjenester:</strong> Transport, kraning, snøbrøyting</p>
+      </div>
+
+      <form action="mailto:post@ospehaugsolutions.no" method="post" enctype="text/plain">
+        <label for="navn">Navn</label>
+        <input id="navn" name="Navn" required />
+
+        <label for="epost">E-post</label>
+        <input type="email" id="epost" name="E-post" required />
+
+        <label for="melding">Melding</label>
+        <textarea id="melding" name="Melding" required></textarea>
+
+        <button type="submit" class="btn">Send forespørsel</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © <span id="year"></span> Ospehaug Solutions. Alle rettigheter reservert.
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
