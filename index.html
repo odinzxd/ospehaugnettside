@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ospehaug Solutions – Nettside under utvikling</title>
+    <title>Ospehaug Solutions – Digitale løsninger</title>
     <style>
         :root {
             --bg: #050509;
@@ -30,7 +30,6 @@
             flex-direction: column;
         }
 
-        /* Header */
         header {
             position: sticky;
             top: 0;
@@ -58,7 +57,6 @@
 
         .nav-logo {
             height: 40px;
-            width: auto;
         }
 
         .nav-name {
@@ -80,10 +78,7 @@
             color: var(--text-muted);
         }
 
-        /* Layout */
-        main {
-            flex: 1;
-        }
+        main { flex: 1; }
 
         .hero {
             max-width: 1100px;
@@ -96,10 +91,7 @@
         }
 
         @media (max-width: 800px) {
-            .hero {
-                grid-template-columns: 1fr;
-                margin-top: 10px;
-            }
+            .hero { grid-template-columns: 1fr; }
         }
 
         .hero-main-title {
@@ -148,22 +140,8 @@
             border: none;
             cursor: pointer;
             color: #fff;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
             text-decoration: none;
             box-shadow: 0 14px 30px rgba(255,64,64,0.35);
-            transition: transform 0.08s ease-out, box-shadow 0.08s ease-out, background 0.08s;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 18px 40px rgba(255,64,64,0.5);
-            background: #ff3434;
-        }
-
-        .btn-primary span {
-            font-size: 1.1rem;
         }
 
         .small-note {
@@ -171,100 +149,13 @@
             color: var(--text-muted);
         }
 
-        /* Right card */
         .hero-card {
             background: radial-gradient(circle at top, rgba(255,64,64,0.16), rgba(15,15,23,0.96));
             border-radius: 22px;
             border: 1px solid rgba(255,255,255,0.08);
-            padding: 22px 20px 20px;
-            box-shadow:
-                0 18px 40px rgba(0,0,0,0.8),
-                0 0 0 1px rgba(255,255,255,0.02);
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+            padding: 22px 20px;
         }
 
-        .hero-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .hero-card-title {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.16em;
-            color: var(--text-muted);
-        }
-
-        .status-dot {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        .status-dot span {
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: var(--accent);
-            box-shadow: 0 0 10px rgba(255,64,64,0.7);
-        }
-
-        .logo-card {
-            background: rgba(0,0,0,0.5);
-            border-radius: 16px;
-            padding: 18px 16px;
-            border: 1px solid rgba(255,255,255,0.04);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .logo-card img {
-            max-width: 100%;
-            max-height: 120px;
-            object-fit: contain;
-            filter: drop-shadow(0 10px 25px rgba(0,0,0,0.9));
-        }
-
-        .info-list {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            display: grid;
-            gap: 6px;
-        }
-
-        .info-label {
-            font-size: 0.78rem;
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
-            opacity: 0.75;
-        }
-
-        .info-value {
-            color: var(--text-main);
-            font-size: 0.9rem;
-        }
-
-        .tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            border-radius: 999px;
-            padding: 4px 10px;
-            background: var(--accent-soft);
-            border: 1px solid rgba(255,64,64,0.5);
-            font-size: 0.75rem;
-            color: #ffb3b3;
-            margin-top: 4px;
-        }
-
-        /* Footer */
         footer {
             border-top: 1px solid rgba(255,255,255,0.04);
             padding: 18px 20px 26px;
@@ -272,17 +163,9 @@
             color: var(--text-muted);
             text-align: center;
         }
-
-        footer a {
-            color: #ff7575;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
+
 <body>
 
 <header>
@@ -291,7 +174,7 @@
             <img src="logo.png" alt="Ospehaug Solutions logo" class="nav-logo">
             <span class="nav-name">Ospehaug Solutions</span>
         </div>
-        <div class="badge">Nettside under utvikling</div>
+        <div class="badge">Digitale løsninger</div>
     </div>
 </header>
 
@@ -299,68 +182,47 @@
     <section class="hero">
         <div>
             <div class="pill-row">
+                <div class="pill">Skreddersydd</div>
+                <div class="pill">Enkel & rimelig</div>
                 <div class="pill">Vestland</div>
-                <div class="pill">Etablert 2025</div>
             </div>
-            <h1 class="hero-main-title">Nettsiden er under utvikling</h1>
+
+            <h1 class="hero-main-title">
+                Enkle, skreddersydde nettsider<br>og digitale løsninger
+            </h1>
+
             <p class="hero-sub">
-                Ospehaug Solutions bygger for tiden opp digital tilstedeværelse. Denne siden er en midlertidig
-                landingsside mens vi jobber videre med innhold og løsninger.
+                Ospehaug Solutions tilbyr rimelige og tilpassede nettsider, bookingsystemer
+                og andre digitale løsninger etter behov. Perfekt for små bedrifter,
+                privatpersoner og oppstartsprosjekter som ønsker noe enkelt – uten unødvendig kompleksitet.
+            </p>
+
+            <p class="hero-sub">
+                Har du en idé eller et behov? Ta kontakt, så finner vi en løsning sammen.
             </p>
 
             <div class="cta-row">
-                <a class="btn-primary" href="mailto:odin@ospehaugsolutions.no">
-                    <span>✉</span>
-                    <span>Kontakt på e-post</span>
+                <a class="btn-primary" href="mailto:post@ospehaugsolutions.no">
+                    ✉ Kontakt for forespørsel
                 </a>
-                <span class="small-note">Ta gjerne kontakt ved spørsmål eller forespørsler.</span>
+                <span class="small-note">Uforpliktende og rask respons</span>
             </div>
-
-            <p class="small-note">
-                Nettsiden vil oppdateres fortløpende etter hvert som bedriften utvikles.
-            </p>
         </div>
 
         <aside class="hero-card">
-            <div class="hero-card-header">
-                <div>
-                    <div class="hero-card-title">Status</div>
-                    <div class="tag">Midlertidig nettside</div>
-                </div>
-                <div class="status-dot">
-                    <span></span>
-                    Aktiv
-                </div>
-            </div>
-
-            <div class="logo-card">
-                <img src="logo.png" alt="Ospehaug Solutions logo stor">
-            </div>
-
-            <div class="info-list">
-                <div>
-                    <div class="info-label">Bedrift</div>
-                    <div class="info-value">Ospehaug Solutions</div>
-                </div>
-                <div>
-                    <div class="info-label">Region</div>
-                    <div class="info-value">Vestland</div>
-                </div>
-                <div>
-                    <div class="info-label">Kontakt</div>
-                    <div class="info-value">
-                        <a href="mailto:post@ospehaugsolutions.no">post@ospehaugsolutions.no</a>
-                    </div>
-                </div>
-            </div>
+            <p class="small-note">
+                ✔ Enkle nettsider<br>
+                ✔ Bookingsystemer (demo / ekte)<br>
+                ✔ Tilpasninger og spesialløsninger<br>
+                ✔ God pris – ingen binding
+            </p>
         </aside>
     </section>
 </main>
 
 <footer>
-    © 2025 Ospehaug Solutions. Nettside under utvikling.
+    © 2025 Ospehaug Solutions – Enkle digitale løsninger på forespørsel.
 </footer>
 
 </body>
 </html>
-
